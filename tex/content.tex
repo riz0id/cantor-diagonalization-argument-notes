@@ -1,0 +1,233 @@
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage{
+  amsfonts, % For \mathbb
+  amsmath,
+  lipsum
+}
+
+\input{tex/layout.tex}
+\input{tex/preamble.tex}
+
+\begin{document}
+
+%% -- Title page -------------------------------------------------------------------------------------------------------
+%%
+
+\input{tex/content/titlepage.tex}
+
+\pagebreak
+
+%% -- Sections ---------------------------------------------------------------------------------------------------------
+%%
+
+\section{Countable and Uncountable Sets}
+
+\subsection{Countable Sets}
+
+\begin{definition}[Countable Set]
+A set $X$ is \textit{countable} if any of the following statements is true:
+
+\begin{itemize}
+  \item For a subset of the natural numbers $Y \subseteq \mathbb{N}$, there exists a bijection $f : X \to Y$.
+  \item There exists a surjective function $f : X \to \mathbb{N}$.
+  \item There exists an injective function $f : \mathbb{N} \to X$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Countably Finite Set]
+A set $X$ is \textit{countably finite} if for a natural number $n \in \mathbb{N}$ and a set $Y = \{1, 2, ..., n\}$ there
+exists mappings $f : X \to Y$ and $g : Y \to X$ such that $g \circ f = \text{id}_X$. That is to say, $X$ is
+\textit{countably infinite} if there is a bijection between $X$ and a sequential subset of $\mathbb{N}$.
+\end{definition}
+
+\subsection{Properties of Countable Sets}
+
+\begin{theorem}
+For a countable set $X$ and a subset $Y$ of $X$, $Y$ is countable.
+
+\textbf{Proof.} The set $X$ is countable, hence there exists a mapping $f: \mathbb{N} \to X$ and
+$f^{-1} : X \to \mathbb{N}$ such that $f^{-1} \circ f = id_X$ - that is, $f$ maps from $\mathbb{N}$ to $X$ one-to-one.
+Assume that $Y$ is uncountable and therefore, there is no bijection between $Y$ and $\mathbb{N}$. Since $Y \subseteq X$,
+it follows that either $Y = X$ or $Y \subset X$. In the case that $Y = X$, we have a contradiction since $Y$ is assumed
+to be uncountable while that $X$ is known to be countable and $Y = X$. In the case that $Y \subset X$, we have a have
+a contradiction since $Y$ is assumed to be uncountable while the mapping $f|_Y : Y \to \mathbb{N}$ is bijective since
+$f^{-1} \circ f|_Y = id_Y$. Therefore, $Y$ is countable. \qed
+
+\end{theorem}
+
+\subsection{Uncountable Sets}
+
+\begin{definition}[Countably Infinite Set]
+A set $X$ is \textit{countably infinite} if there exists mappings $f : X \to \mathbb{N}$ and $g : \mathbb{N} \to X$ such
+that $g \circ f = \text{id}_X$. That is to say, $X$ is countable and there exists a bijection between $X$ and
+$\mathbb{N}$.
+\end{definition}
+
+\begin{definition}[Uncountable Set]
+A set $X$ is \textit{uncountable} if there is no injective mapping from $X$ to $\mathbb{N}$, hence there is no
+bijection between $X$ and $\mathbb{N}$. An \textit{uncountable set} is said to be \textit{uncountably infinite}.
+\end{definition}
+
+\begin{remark}
+There is no set that is \textit{uncountable} and \textit{finite}. This is a consequence of the definitions for an
+\textit{uncountable set} and a \text{countably finite set} being mutually exclusive around the existence of a bijection
+to $\mathbb{N}$.
+\end{remark}
+
+\subsection{Properties of Uncountable Sets}
+
+\begin{theorem}
+If $X$ is uncountable and $X \subseteq Y$, then $Y$ is uncountable.
+
+\textbf{Proof.} Assume that $Y$ is countable, hence there exists mappings $f : Y \to \mathbb{N}$ and
+$g : \mathbb{N} \to Y$ such that $g \circ f = \text{id}_Y$. Since $X \subseteq Y$, we have that either the case that
+$X = Y$ or $X \subset Y$. In the case that $X = Y$ we have a contradiction by the fact that $X$ is known to be
+uncountable and $Y$ is assumed to be countable. Otherwise, we have that $X \subset Y$ and a mapping
+$f|_X : X \to \mathbb{N}$ that is bijective since $g \circ f|_X = id_X$. This contradicts the assumption that $X$ is
+uncountable. Therefore, $Y$ is uncountable. \qed
+\end{theorem}
+
+\section{Existence of Uncountable Sets}
+
+Cantor illustrated his diagonalization argument in the paper "Uber ein elementare Frage der Mannigfaltigkeitslehre"
+which was published to the journal of the "Deutsche Mathematiker-Vereinigung" (German Mathematical Union) in 1891. The
+German Mathematical Union was an organization that was founded by Cantor in 1890. Cantor notes in "Uber ein elementare
+Frage der Mannigfaltigkeitslehre" that the diagonalization argument laid out in the paper was not the first to provide a
+proof of the existence uncountably infinite sets, but it was the first proof to do so without considering the
+irrationals. An earlier paper by Cantor "On a property of a set [Inbegriff] of all real algebraic numbers" published in
+1877 was the first proof that there are sets that are uncountably infinite and further that the set of real numbers is
+uncountably infinite.
+
+\subsection{Diagonalization Argument}
+
+\begin{theorem}
+There exists a set that is uncountably infinite.
+
+\textbf{Proof.} Let $M$ be the set containing two elements, that is $M = \{0, 1\}$. Let $M^*$ be the set of all infinite
+strings $x_1 x_2 x_3 \ldots$ with atoms $x_i \in M$. Assume that all sets - including $M^*$ - are countable. Hence the
+enumeration:
+
+\begin{align*}
+M^*_1 &= 00000 \ldots 0 \dots \\
+M^*_2 &= 11111 \ldots 1 \dots \\
+M^*_3 &= 10101 \ldots 0 \dots \\
+M^*_4 &= 01010 \ldots 1 \dots \\
+M^*_5 &= 11011 \ldots 0 \dots \\
+\vdots
+\end{align*}
+
+Should enumerate every elements of the set $M^*$ exactly once. To show that $M^*$ is not countable, we show that there
+exists a string $M^*_0$ that cannot be equal to any string $M^*_n$ for $n \in 1, 2, 3, ...$. Therefore proving that
+there is no bijective mapping from $\mathbb{N}$ to $M^*$ by contradiction; and therefore, proving that $M^*$ is
+uncountable. For this, let there be an enumeration
+
+\begin{align*}
+M^*_1 &= x_{11} x_{12} x_{13} x_{14} x_{15} \ldots x_{1n} \dots \\
+M^*_2 &= x_{21} x_{22} x_{13} x_{24} x_{25} \ldots x_{2n} \dots \\
+M^*_3 &= x_{31} x_{32} x_{33} x_{34} x_{35} \ldots x_{3n} \dots \\
+M^*_4 &= x_{41} x_{42} x_{43} x_{44} x_{45} \ldots x_{4n} \dots \\
+M^*_5 &= x_{51} x_{52} x_{53} x_{54} x_{55} \ldots x_{5n} \dots \\
+\vdots
+\end{align*}
+
+where $x_{ij}$ denotes an atom, that is $x_{ij} \in M$ for $i, j \in \mathbb{N}$. Furthermore, define the unary
+operation $\neg : M \to M$ be the compliment of an atom:
+
+\begin{align*}
+\neg 0 &= 1 \\
+\neg 1 &= 0
+\end{align*}
+
+Now define the string $M^*_0 = x_{01} x_{02} x_{03} \dots x_{0n} \dots$ such that $x_{0n} = \neg x_{nn}$. Given this we
+can see that for all $n \in {1, 2, 3, \dots}$, there is no $M^*_n$ satisfying the equation $M^*_0 = M^*_n$. If there
+were some $M^*_n$ satisfying $M^*_0 = M^*_n$, then $x_{0n} = x_{nn}$ for all $n \in \mathbb{N}$, which is a
+contradiction by the definition of $M^*_0$. Therefore, $M^*$ is uncountable. \qed
+\end{theorem}
+
+\pagebreak
+
+\begin{definition}[Algebraic Real Number]
+An \textit{algebraic real number} is the root of a non-zero polynomial with coefficients in $\mathbb{Q}$ and with
+finite degree of at least $1$. That is, algebraic real number a root to a polynomial of the form
+
+\begin{equation*}
+a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0 = 0 \text{,}
+\end{equation*}
+
+for all $1, \dots, n$ and $n \in \mathbb{N}$.
+\end{definition}
+
+\begin{theorem}
+The set of algebraic real numbers is uncountable.
+
+\textbf{Proof.} Let $D$ be the set of all "digits", that is defined as $D = {0, 1, 2, 3, \dots, 9}$. Moreover, let
+$D^*$ be the set of all decimal expansions, that is defined $D^* = d_{1} d_{2} d_{3} \ldots$ and $d_{n} \in D$. Let the
+function $suc : D \to D$ be the "digit successor" function which is defined as:
+
+\begin{align*}
+suc(0) &= 1 \\
+suc(1) &= 2 \\
+suc(2) &= 3 \\
+&\vdots \\
+suc(8) &= 9 \\
+suc(9) &= 0
+\end{align*}
+
+Now, let $f : D \to R$ be an injective function that maps a digit to the corresponding real number, that is:
+
+\begin{align*}
+f(0) &= 0 \\
+f(1) &= 1 \\
+f(2) &= 2 \\
+&\vdots \\
+f(9) &= 9
+\end{align*}
+
+Lastly, define a mapping $\text{dec}$ from $D^*$ to the set of algebraic real numbers as:
+
+\begin{equation*}
+\text{dec}(d_{1} d_{2} d_{3} \ldots) = \sum_{n=1}^{\infty} \frac{1}{10^{n}} f(d_{n})
+\end{equation*}
+
+Given this, we can see that the decimal expansion $999 \ldots$ under $\text{dec}$ corresponds to the
+algebraic real number $1$
+
+\begin{equation*}
+\text{dec}(999 \ldots) &= \sum_{n=1}^{\infty} \frac{1}{10^{n}} f(9) \\
+= \sum_{n=1}^{\infty} \frac{1}{10^{n}} 9 \\
+= 0.999 \ldots
+= 1
+\end{equation*}
+
+Now, consider the following enumeration of decimal expansions:
+
+\begin{align*}
+D^*_1 &= 00000 \ldots \\
+D^*_2 &= 12345 \ldots \\
+D^*_3 &= 23456 \ldots \\
+D^*_4 &= 34567 \ldots \\
+D^*_5 &= 45678 \ldots \\
+\vdots
+\end{align*}
+
+Proof that the set of algebraic real numbers is uncountable can be shown similarly to as is done in theorem $2.1$: by
+assuming that the set of algebraic real numbers is countable and then showing that for any enumeration of decimal
+expansions $D^*_n$ that is one-to-one with $\mathbb{N}$ - that is, there is $D^*_n$ for all $n \in \mathbb{N}$ - there
+exists a decimal expansion $D^*_0$ that is not equal to any $D^*_n$ by construction. Thereby proving that the set of
+algebraic real numbers is uncountable by contradiction. To carry this out, define $D^*_0 = d_{01} d_{02} d_{03} \ldots$
+such that $d_{0n} = suc(d_{nn})$. Given this, we can see that for all $n \in {1, 2, 3, \dots}$, there is no $D^*_n$
+satisfying the equation $D^*_0 = D^*_n$. If there were some $D^*_n$ satisfying $D^*_0 = D^*_n$, then $d_{0n} = d_{nn}$
+for all $n \in \mathbb{N}$, which is a contradiction by the definition of $D^*_0$. Therefore, the set of algebraic real
+numbers is uncountable. \qed
+\end{theorem}
+
+\begin{theorem}
+The set of real numbers is uncountable.
+
+\textbf{Proof.} The set of real numbers is the union of the set of algebraic real numbers and the set of transcendental,
+hence the set of algebraic real numbers is a subset of $\mathbb{R}$. Thus it follows from theorem $2.2$ and theorem $2.1$
+that $\mathbb{R}$ must also be uncountable. \qed
+\end{theorem}
+
+\end{document}

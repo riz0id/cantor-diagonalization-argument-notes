@@ -1,0 +1,77 @@
+
+%% -- Theorem Declarations ---------------------------------------------------------------------------------------------
+%%
+
+\usepackage{
+  amsthm,
+  thmtools,
+  etoolbox
+}
+
+\input{tex/preamble/amsthm/amsthm-style.tex}
+
+%% -- Theorem Declarations - Numbered ----------------------------------------------------------------------------------
+%%
+
+\xdeclaretheorem[
+  name         = Definition,
+  style        = definition-thmstyle,
+  numberwithin = section,
+]{definition}
+
+\xdeclaretheorem[
+  name         = Proposition,
+  style        = proposition-thmstyle,
+  numberwithin = section,
+]{proposition}
+
+\declaretheoremstyle[
+  headfont      = \mdseries\bfseries,
+  bodyfont      = \normalfont,
+  spaceabove    = 1em,
+  spacebelow    = 1.25em,
+  postheadspace = 0.5em,
+]{theorem-style}
+
+\xdeclaretheorem[
+  name         = Theorem,
+  style        = theorem-style,
+  numbered     = yes,
+  numberwithin = section,
+]{theorem}
+
+\declaretheoremstyle[
+  spaceabove    = 1em,
+  spacebelow    = 1.25em,
+  bodyfont      = \normalfont,
+  postheadspace = 0.5em,
+]{remark-style}
+
+\xdeclaretheorem[
+  name     = Remark,
+  style    = remark-style,
+  numbered = no,
+]{remark}
+
+%% -- Theorem Declarations - Unnumbered --------------------------------------------------------------------------------
+%%
+
+\xdeclaretheorem[
+  name     = Definition,
+  style    = definition-thmstyle,
+  numbered = no,
+]{definition*}
+
+\xdeclaretheorem[
+  name     = Proof,
+  style    = proof-thmstyle,
+  numbered = no,
+]{proof*}
+
+\xdeclaretheorem[
+  name     = Proposition,
+  style    = proposition-thmstyle,
+  numbered = no,
+]{proposition*}
+
+
